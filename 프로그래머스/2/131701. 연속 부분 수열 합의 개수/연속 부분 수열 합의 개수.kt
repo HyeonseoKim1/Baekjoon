@@ -6,22 +6,18 @@ class Solution {
         var answer: Int = 0
         var sums = mutableSetOf<Int>()
         var nums = elements + elements
+        //print(nums.contentToString())
         
-        //println(nums)
-        
-        // 원형 수열 길이별 계산
-        for(size in elements.indices){
-            var total = 0
-            
-            for(i in 0..elements.size){
-                //println(nums.slice(i..i+size))
-                total = nums.slice(i..i+size).sumOf { it }
-                //println(total)  
-                sums.add(total)
+        for (i in 1 until elements.size+1){
+            for (j in 0 until elements.size){
+                sums.add(nums.slice(j..j+i-1).sum())
             }
-            //println(sums)
-            answer =  sums.size
+            
+            //println("$i, $sums")
         }
+        
+        //print(sums)
+        answer = sums.size
         
         return answer
     }

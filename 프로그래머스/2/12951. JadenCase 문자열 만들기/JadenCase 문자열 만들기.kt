@@ -4,16 +4,14 @@
 class Solution {
     fun solution(s: String): String {
         var answer = ""
-        var words = s.lowercase().split(" ").toMutableList()
+        var lst = s.split(" ").map{it.lowercase()
+                                    .replaceFirstChar{it.uppercase()}
+        }
         
-        for(i in words.indices){
-            var word = words[i]
-            
-            if(word.isNotEmpty() && word[0].isLowerCase()){
-                words[i] = word[0].uppercaseChar() + word.substring(1)
-            }
-        }   
-        answer = words.joinToString(" ")
-        return answer
+        print(lst)
+        
+        return lst.joinToString(" ")
+  
     }
+    
 }

@@ -3,16 +3,20 @@
 class Solution {
     fun solution(n: Int): Int {
         var answer = 0
-        var F_lst = MutableList(n+1){0} 
-        F_lst[1] = 1
+        var pre1 = 0
+        var pre2 = 1
         
-        if(n >= 2){
-            for(i in 2..n){
-                F_lst[i] = (F_lst[i-1] + F_lst[i-2]) % 1234567
-            }  
+        if(n < 2){
+            return n
         }
-
-        answer = F_lst[n]
+        
+        for (i in 0 until n-1){
+            
+            answer = (pre1 + pre2)%1234567
+            pre1 = pre2
+            pre2 = answer
+        }
+        
         return answer
     }
 }

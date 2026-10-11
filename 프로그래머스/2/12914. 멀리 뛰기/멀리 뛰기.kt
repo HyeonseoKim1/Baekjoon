@@ -4,19 +4,18 @@ class Solution {
     fun solution(n: Int): Long {
         var answer: Long = 0
         
-        if(n <= 2){ return n.toLong() }
+        if(n < 3) return n.toLong()
         
-        // 3 이상인 경우
-        var methods = LongArray(n+1){0}
+        var methods = LongArray(n+1)
         methods[1] = 1
         methods[2] = 2
         
-        for(i in 3..n){
-            methods[i] = (methods[i-1] + methods[i-2]) % 1234567
+        for (i in 3 until n+1){
+            methods[i] = (methods[i-1]+ methods[i-2]) %1234567
         }
-
-        answer = methods[n].toLong()
-   
+        
+        answer = methods[n]
+        
         return answer
     }
 }

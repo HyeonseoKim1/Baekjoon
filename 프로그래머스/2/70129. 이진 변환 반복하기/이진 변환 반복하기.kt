@@ -7,22 +7,22 @@
 class Solution {
     fun solution(s: String): IntArray {
         var answer: IntArray = intArrayOf()
-        var cnt_zero = 0 // 제거한 0의 수
-        var cnt = 0 // 연산 반복 수
-        var string = s
-
-        while(string != "1"){
-            
-            // 모든 0 제거
-            cnt_zero += string.count{it == '0'}
-            string = string.replace("0","")
-   
-            // 2진법으로 표현한 문자열 변환
-            string = string.length.toString(2)
-
-            cnt += 1
-        }
         
+        var cnt = 0
+        var cnt_zero = 0
+        var str = s
+       
+       
+        while (str != "1"){
+            
+            cnt_zero += str.count{it == '0'}
+            
+            str = str.replace("0", "")
+            
+            str = str.length.toString(2)
+            
+            cnt++
+        }
         answer = intArrayOf(cnt, cnt_zero)
         return answer
     }
